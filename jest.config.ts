@@ -4,6 +4,8 @@
  */
 
 export default {
+  presets: [['@babel/preset-env', {targets: {node: 'current'}}],
+  '@babel/preset-typescript',],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -31,7 +33,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
