@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/Olliveer/api-node-clean.git",
   "author": "José Oliveira <j.oliveira90@live.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
 }
