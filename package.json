@@ -1,0 +1,8 @@
+{
+  "name": "api-node-clean",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Olliveer/api-node-clean.git",
+  "author": "José Oliveira <j.oliveira90@live.com>",
+  "license": "MIT"
+}
