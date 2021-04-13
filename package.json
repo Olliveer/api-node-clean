@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
