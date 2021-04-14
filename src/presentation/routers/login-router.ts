@@ -1,14 +1,13 @@
 import { HttpResponse } from '../helpers/http-response'
 
 class LoginRouter {
-  authUseCase: any
-  constructor (authUseCase: any) {
+  constructor (authUseCase) {
     this.authUseCase = authUseCase
   }
 
   // @ts-ignore
   route (httpRequest) {
-    if (!httpRequest || !httpRequest.body) {
+    if (!httpRequest || !httpRequest.body || !this.authUseCase || !this.authUseCase.auth) {
       return HttpResponse.serverError()
     }
     const { email, password } = httpRequest.body
