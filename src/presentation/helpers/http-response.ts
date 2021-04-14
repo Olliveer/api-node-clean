@@ -1,15 +1,15 @@
-import { MissingParamError } from "./missing-param-error"
-
+import { MissingParamError } from './missing-param-error'
 
 class HttpResponse {
-  //@ts-ignore
-  static badRequest(paramName) {
+  // @ts-ignore
+  static badRequest (paramName) {
     return {
       statusCode: 400,
       body: new MissingParamError(paramName)
     }
   }
-  static serverError() {
+
+  static serverError () {
     return {
       statusCode: 500
     }

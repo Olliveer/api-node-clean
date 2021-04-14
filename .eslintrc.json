@@ -4,27 +4,15 @@
         "node": true
     },
     "extends": [
-        "airbnb-base"
+        "standard"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
+        "ecmaVersion": 12
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
-        "consistent-return": 2,
-        "indent": [
-            1,
-            4
-        ],
-        "no-else-return": 1,
-        "semi": [
-            1,
-            "always"
-        ],
-        "space-unary-ops": 2
     }
 }
