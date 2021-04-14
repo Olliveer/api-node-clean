@@ -1,4 +1,5 @@
 import { MissingParamError } from './missing-param-error'
+import { UnauthorizedError } from './unauthorized-error'
 
 class HttpResponse {
   // @ts-ignore
@@ -12,6 +13,13 @@ class HttpResponse {
   static serverError () {
     return {
       statusCode: 500
+    }
+  }
+
+  static unauthorizedError () {
+    return {
+      statusCode: 401,
+      body: new UnauthorizedError()
     }
   }
 }

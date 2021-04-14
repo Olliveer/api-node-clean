@@ -1,8 +1,11 @@
 import { MissingParamError } from '../helpers/missing-param-error'
+import { UnauthorizedError } from '../helpers/unauthorized-error'
 import { LoginRouter } from './login-router'
 
 const makeSut = () => {
   class AuthUseCaseSpy {
+    email!: string
+    password!: string
     auth (email: string, password: string) {
       this.email = email
       this.password = password
@@ -74,7 +77,6 @@ describe('Login Router', () => {
     }
 
     sut.route(httpRequest)
-    // @ts-ignore
     expect(authUseCaseSpy.email).toBe(httpRequest.body.email)
     expect(authUseCaseSpy.password).toBe(httpRequest.body.password)
   })
@@ -92,5 +94,7 @@ describe('Login Router', () => {
     const httpResponse = sut.route(httpRequest)
     // @ts-ignore
     expect(httpResponse?.statusCode).toBe(401)
+    // @ts-ignore
+    expect(httpResponse.body).toEqual(new UnauthorizedError())
   })
 })
