@@ -17,6 +17,7 @@ const makeSut = () => {
 const makeEmailValidator = () => {
   class EmailValidatorSpy {
     isValid (email) {
+      this.email = email
       return this.isEmailValid
     }
   }
@@ -149,21 +150,6 @@ describe('Login Router', () => {
     expect(httpResponse?.statusCode).toBe(200)
   })
 
-  test('Should return 200 when valid credentials are provided', async () => {
-    const { sut, authUseCaseSpy } = makeSut()
-
-    const httpRequest = {
-      body: {
-        email: 'valid_email@mail.com',
-        password: 'valid_password'
-      }
-    }
-
-    const httpResponse = await sut.route(httpRequest)
-    expect(httpResponse?.statusCode).toBe(200)
-    expect(httpResponse?.body.accessToken).toEqual(authUseCaseSpy.accesToken)
-  })
-
   test('Should return 500 if no AuthUseCase is provided', async () => {
     // @ts-ignore
     const sut = new LoginRouter()
@@ -269,5 +255,19 @@ describe('Login Router', () => {
 
     const httpResponse = await sut.route(httpRequest)
     expect(httpResponse?.statusCode).toBe(500)
+  })
+
+  test('Should call EmailValidator with correct email', async () => {
+    const { sut, emailValidatorSpy } = makeSut()
+
+    const httpRequest = {
+      body: {
+        email: 'any_email@mail.com',
+        password: 'any_password'
+      }
+    }
+
+    await sut.route(httpRequest)
+    expect(emailValidatorSpy.email).toBe(httpRequest.body.email)
   })
 })
