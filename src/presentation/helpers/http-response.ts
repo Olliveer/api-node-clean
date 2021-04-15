@@ -1,13 +1,12 @@
-import { MissingParamError } from './missing-param-error'
 import { ServerError } from './server-error'
 import { UnauthorizedError } from './unauthorized-error'
 
 class HttpResponse {
   // @ts-ignore
-  static badRequest (paramName) {
+  static badRequest (error) {
     return {
       statusCode: 400,
-      body: new MissingParamError(paramName)
+      body: error
     }
   }
 
@@ -25,7 +24,7 @@ class HttpResponse {
     }
   }
 
-  static ok (data) {
+  static ok (data: string) {
     return {
       statusCode: 200,
       body: data
