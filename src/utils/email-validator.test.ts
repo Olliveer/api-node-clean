@@ -1,11 +1,6 @@
 /* eslint-disable no-undef */
+import { EmailValidator } from './email-validator'
 import validator from 'validator'
-
-class EmailValidator {
-  isValid (email: string) {
-    return validator.isEmail(email)
-  }
-}
 
 const makeSut = () => {
   return new EmailValidator()
