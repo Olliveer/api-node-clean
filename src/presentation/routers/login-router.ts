@@ -3,7 +3,9 @@ import { InvalidParamError } from '../helpers/invalid-param-error'
 import { MissingParamError } from '../helpers/missing-param-error'
 
 class LoginRouter {
-  constructor (authUseCase, emailValidator) {
+  authUseCase: any
+  emailValidator: any
+  constructor (authUseCase: any, emailValidator: any) {
     this.authUseCase = authUseCase
     this.emailValidator = emailValidator
   }
@@ -25,6 +27,7 @@ class LoginRouter {
       if (!accessToken) {
         return HttpResponse.unauthorizedError()
       }
+      // @ts-ignore
       return HttpResponse.ok({ accessToken })
     } catch (error) {
       // console.log('Server error: ', error)

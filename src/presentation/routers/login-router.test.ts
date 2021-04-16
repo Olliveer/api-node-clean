@@ -16,7 +16,9 @@ const makeSut = () => {
 
 const makeEmailValidator = () => {
   class EmailValidatorSpy {
-    isValid (email) {
+    email?: string
+    isEmailValid?: boolean
+    isValid (email:string) {
       this.email = email
       return this.isEmailValid
     }
@@ -122,7 +124,7 @@ describe('Login Router', () => {
 
   test('Should return 401 when invalid credentials are provided', async () => {
     const { sut, authUseCaseSpy } = makeSut()
-    authUseCaseSpy.accesToken = null
+    authUseCaseSpy.accesToken = undefined
 
     const httpRequest = {
       body: {
@@ -167,6 +169,7 @@ describe('Login Router', () => {
   })
 
   test('Should return 500 if no AuthUseCase has no auth method', async () => {
+    // @ts-ignore
     const sut = new LoginRouter({})
     const httpRequest = {
       body: {
@@ -182,6 +185,7 @@ describe('Login Router', () => {
 
   test('Should return 500 if AuthUseCase throws', async () => {
     const authUseCaseSpy = makeAuthUseCaseWithError()
+    // @ts-ignore
     const sut = new LoginRouter(authUseCaseSpy)
     const httpRequest = {
       body: {
