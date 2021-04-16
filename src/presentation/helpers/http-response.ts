@@ -1,5 +1,5 @@
-import { ServerError } from './server-error'
-import { UnauthorizedError } from './unauthorized-error'
+import { ServerError } from '../errors/server-error'
+import { UnauthorizedError } from '../errors/unauthorized-error'
 
 class HttpResponse {
   // @ts-ignore
